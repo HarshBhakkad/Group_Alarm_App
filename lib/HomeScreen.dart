@@ -32,9 +32,11 @@ class _home_screenState extends State<home_screen> {
             )
           ],
         ),
-        body: Column(
-          children:
-              globals.alarm_cards.map((alarm_card) => alarm_card).toList(),
+        body: SingleChildScrollView(
+          child: Column(
+            children:
+                globals.alarm_cards.map((alarm_card) => alarm_card).toList(),
+          ),
         ),
       ),
     );
