@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class alarm_card extends StatelessWidget {
   int hour = 0;
   int minute = 0;
-
+  var dt = DateTime.now();
   alarm_card({this.hour = 23, this.minute = 59});
 
   @override

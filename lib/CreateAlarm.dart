@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'HomeScreen.dart';
 import 'globals.dart' as globals;
 import 'AlarmCard.dart';
+import 'package:flutter_alarm_clock/flutter_alarm_clock.dart';
 
 class create_alarm extends StatefulWidget {
   const create_alarm({Key? key}) : super(key: key);
@@ -11,10 +12,8 @@ class create_alarm extends StatefulWidget {
 }
 
 class _create_alarmState extends State<create_alarm> {
-  TextEditingController _hourController = TextEditingController();
-  TextEditingController _minuteController = TextEditingController();
-  int hours = 23;
-  int minutes = 59;
+  TextEditingController _hour_controller = TextEditingController();
+  TextEditingController _minute_controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -37,9 +36,12 @@ class _create_alarmState extends State<create_alarm> {
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
                           child: TextFormField(
-                            onChanged: ((value) {
-                              hours = int.parse(value);
-                            }),
+                            controller: _hour_controller,
+                            // onChanged: ((value) {
+                            //   setState(() {
+                            //     _hour_controller.text = value;
+                            //   });
+                            // }),
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                               labelText: 'Hours',
@@ -52,9 +54,10 @@ class _create_alarmState extends State<create_alarm> {
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
                           child: TextFormField(
-                            onChanged: (value) {
-                              minutes = int.parse(value);
-                            },
+                            controller: _minute_controller,
+                            // onChanged: (value) {
+                            //   minutes = int.parse(value);
+                            // },
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                               labelText: 'Minutes',
@@ -73,8 +76,13 @@ class _create_alarmState extends State<create_alarm> {
                       child: const Text('Create'),
                       onPressed: () {
                         setState(() {
+                          FlutterAlarmClock.createAlarm(
+                              int.parse(_hour_controller.text),
+                              int.parse(_minute_controller.text));
                           globals.alarm_cards.add(
-                            alarm_card(hour: hours, minute: minutes),
+                            alarm_card(
+                                hour: int.parse(_hour_controller.text),
+                                minute: int.parse(_minute_controller.text)),
                           );
                         });
 
