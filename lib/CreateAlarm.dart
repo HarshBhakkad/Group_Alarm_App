@@ -12,8 +12,8 @@ class create_alarm extends StatefulWidget {
 }
 
 class _create_alarmState extends State<create_alarm> {
-  TextEditingController _hour_controller = TextEditingController();
-  TextEditingController _minute_controller = TextEditingController();
+  TextEditingController _hour_controller = TextEditingController(text: '23');
+  TextEditingController _minute_controller = TextEditingController(text: '59');
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -37,11 +37,6 @@ class _create_alarmState extends State<create_alarm> {
                           padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
                           child: TextFormField(
                             controller: _hour_controller,
-                            // onChanged: ((value) {
-                            //   setState(() {
-                            //     _hour_controller.text = value;
-                            //   });
-                            // }),
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                               labelText: 'Hours',
@@ -55,9 +50,6 @@ class _create_alarmState extends State<create_alarm> {
                           padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
                           child: TextFormField(
                             controller: _minute_controller,
-                            // onChanged: (value) {
-                            //   minutes = int.parse(value);
-                            // },
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                               labelText: 'Minutes',
