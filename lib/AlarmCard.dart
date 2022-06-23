@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:alarm_app/CreateAlarm.dart';
 import 'dart:async';
 import 'package:alarm_app/globals.dart' as globals;
+import 'package:firebase_auth/firebase_auth.dart';
 
 class alarm_card extends StatefulWidget {
   int hour = 0;
@@ -124,6 +125,17 @@ class _NoAlarmState extends State<NoAlarm> {
                   MaterialPageRoute(builder: (context) => const create_alarm()),
                 );
               },
+            ),
+            Container(
+              margin: const EdgeInsets.all(20),
+              child: Center(
+                child: ElevatedButton(
+                  child: const Text('Log Out'),
+                  onPressed: () {
+                    FirebaseAuth.instance.signOut();
+                  },
+                ),
+              ),
             ),
             SizedBox(
               height: 100,

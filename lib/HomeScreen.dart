@@ -1,5 +1,6 @@
 import 'package:alarm_app/AlarmCard.dart';
 import 'package:alarm_app/CreateAlarm.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'globals.dart' as globals;
 
@@ -31,6 +32,12 @@ class _home_screenState extends State<home_screen> {
               },
             )
           ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            FirebaseAuth.instance.signOut();
+          },
+          child: Icon(Icons.logout),
         ),
         body: globals.alarm_cards.isEmpty
             ? NoAlarm()
