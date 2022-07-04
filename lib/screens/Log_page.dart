@@ -6,6 +6,7 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:form_validator/form_validator.dart';
 import 'HomeScreen.dart';
+import 'package:alarm_app/globals.dart' as globals;
 
 class LoginPage extends StatelessWidget {
   TextEditingController _emailAddress = TextEditingController();
@@ -26,6 +27,7 @@ class LoginPage extends StatelessWidget {
         email: _emailAddress.text,
         password: _password_.text,
       );
+      globals.alarm_cards.clear();
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         // _errorMessageemail = 'No user found for that email.';

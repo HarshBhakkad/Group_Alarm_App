@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'Log_page.dart';
 import 'Sign_page.dart';
+import '../globals.dart' as globals;
 
 class sign_page extends StatelessWidget {
   const sign_page({Key? key}) : super(key: key);
+
+  @override
+  void initState() {
+    globals.alarm_cards.clear();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +48,7 @@ class sign_page extends StatelessWidget {
                 minWidth: double.infinity,
                 height: 60,
                 onPressed: () {
+                  globals.alarm_cards.clear();
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => LoginPage()),
@@ -65,6 +72,7 @@ class sign_page extends StatelessWidget {
                 minWidth: double.infinity,
                 height: 60,
                 onPressed: () {
+                  globals.alarm_cards.clear();
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => SignupPage()),

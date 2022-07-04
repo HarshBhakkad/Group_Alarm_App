@@ -1,4 +1,4 @@
-import 'package:alarm_app/HomeScreen.dart';
+import 'package:alarm_app/screens/HomeScreen.dart';
 import 'package:alarm_app/main.dart';
 import 'package:flutter/material.dart';
 import 'Log_page.dart';
@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:async';
 import 'package:form_validator/form_validator.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:alarm_app/globals.dart' as globals;
 
 class SignupPage extends StatefulWidget {
   @override
@@ -38,6 +39,11 @@ class _SignupPageState extends State<SignupPage> {
         email: _email.text,
         password: _password.text,
       );
+      await globals.users.doc(FirebaseAuth.instance.currentUser?.email).set({
+        'email': FirebaseAuth.instance.currentUser?.email,
+        'grpids': [],
+        'alarm_cards': [],
+      });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');

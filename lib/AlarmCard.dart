@@ -1,8 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:alarm_app/CreateAlarm.dart';
+import 'package:alarm_app/screens/CreateAlarm.dart';
 import 'dart:async';
 import 'package:alarm_app/globals.dart' as globals;
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_alarm_clock/flutter_alarm_clock.dart';
 
 class alarm_card extends StatefulWidget {
   int hour = 0;
@@ -16,14 +18,24 @@ class alarm_card extends StatefulWidget {
 
 class _alarm_cardState extends State<alarm_card> {
   var dt = DateTime.now();
+  var currState = false;
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Column(
         children: [
-          ListTile(
-            leading: Icon(Icons.alarm),
+          SwitchListTile(
+            value: currState,
+            onChanged: (value) {
+              setState(() {
+                currState = value;
+                if (currState) {
+                  FlutterAlarmClock.createAlarm(widget.hour, widget.minute);
+                }
+              });
+            },
+            // : Icon(Icons.alarm),
             title: Text('Alarm'),
             subtitle: Text('${widget.hour}:${widget.minute}'),
           ),
@@ -32,9 +44,8 @@ class _alarm_cardState extends State<alarm_card> {
               ElevatedButton(
                 child: const Text('Cancel'),
                 onPressed: () {
-                  setState(() {
-                    globals.alarm_cards.remove(this);
-                  });
+                  print(globals.alarm_cards);
+                  setState(() {});
                 },
               ),
               ElevatedButton(
@@ -133,6 +144,7 @@ class _NoAlarmState extends State<NoAlarm> {
                   child: const Text('Log Out'),
                   onPressed: () {
                     FirebaseAuth.instance.signOut();
+                    globals.alarm_cards.clear();
                   },
                 ),
               ),
