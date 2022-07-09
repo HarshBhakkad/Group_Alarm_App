@@ -15,6 +15,14 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+## Features
+
+- Create Alarm
+- Create Groups
+- Common alarm for Groups
+- Admin can add/remove members from the group.
+
+
 ## Screenshots
 
 Sign In or Log In Page
@@ -42,9 +50,3 @@ Create Alarm
 <img src="createalarm.jpeg" />
 
 
-## Features
-
-- Create Alarm
-- Create Groups
-- Common alarm for Groups
-- Admin can add/remove members from the group.
