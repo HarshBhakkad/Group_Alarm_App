@@ -40,3 +40,11 @@ Group Page
 Create Alarm
 
 <img src="createalarm.jpeg" />
+
+
+## Features
+
+- Create Alarm
+- Create Groups
+- Common alarm for Groups
+- Admin can add/remove members from the group.
