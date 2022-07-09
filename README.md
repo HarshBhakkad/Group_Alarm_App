@@ -15,3 +15,28 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+## Screenshots
+
+Sign In or Log In Page
+
+<img src="Sign_Log.jpeg" />
+
+Sign Up Page
+
+<img src="Signup.jpeg" />
+
+Log In Page
+
+<img src="Login.jpeg" />
+
+Home Screen
+
+<img src="homescreen.jpeg" />
+
+Group Page
+
+<img src="groupPage.jpeg" />
+
+Create Alarm
+
+<img src="createalarm.jpeg" />
